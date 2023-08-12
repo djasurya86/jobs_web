@@ -1,0 +1,17 @@
+body {
+    overflow: hidden;
+}
+
+.content p {
+    margin-bottom: 20px;
+}
+
+.content ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.apply a {
+    color: #3182ce;
+    text-decoration: underline;
+}

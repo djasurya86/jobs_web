@@ -1,42 +1,25 @@
 import React from 'react';
 import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
+    ChakraProvider
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import Public from './components/Public';
+import Protected from './components/Protected';
+import Login from './components/Login';
+import Job from './components/Job';
+import JobDetail from './components/JobDetail';
+import { Routes, Route } from "react-router-dom";
+import './App.css';
 
 function App() {
-  return (
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
-    </ChakraProvider>
-  );
+    return (
+        <ChakraProvider>
+            <Routes>
+                <Route path="/" element={<Public><Login /></Public>} />
+                <Route path="/job" element={<Protected><Job /></Protected>} />
+                <Route path="/job/:id" element={<Protected><JobDetail /></Protected>} />
+            </Routes>
+        </ChakraProvider>
+    );
 }
 
 export default App;
